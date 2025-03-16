@@ -26,8 +26,8 @@ Installation
 bash
 Copy
 
-git clone https://github.com/your-username/rag-chatbot.git
-cd rag-chatbot
+git clone https://github.com/arjunjanamatti/advanced_rag.git
+cd advanced_rag
 
 2. Install Python Dependencies
 bash
@@ -65,13 +65,13 @@ Option 2: Run with Docker
     bash
     Copy
 
-    docker build -t rag-chatbot .
+    docker build -t advanced_rag .
 
     Run the Docker container:
     bash
     Copy
 
-    docker run -p 7860:7860 rag-chatbot
+    docker run -p 7860:7860 advanced_rag
 
     Open your browser and go to:
     Copy
@@ -95,83 +95,3 @@ Usage
     View Chat History:
 
         The chat history is saved in logs/chat_history.json.
-
-Project Structure
-Copy
-
-rag-chatbot/
-├── app/
-│   ├── __init__.py
-│   ├── main.py              # Main application logic
-│   ├── document_loader.py   # Load and process PDF/Word docs
-│   ├── chunker.py           # Chunking logic
-│   ├── retriever.py         # Ensemble retriever (semantic + BM25)
-│   ├── generator.py         # DeepSeek 1.5B-based response generation
-│   ├── chat_history.py      # Save and load chat history
-│   └── utils.py            # Utility functions
-├── data/                   # Folder for uploaded documents
-├── logs/                   # Folder for chat history logs
-├── Dockerfile              # Docker configuration
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
-└── .gitignore              # Ignore files for Git
-
-Docker Compose (Optional)
-
-If you prefer using Docker Compose, create a docker-compose.yml file:
-yaml
-Copy
-
-version: "3.8"
-services:
-  rag-chatbot:
-    build: .
-    ports:
-      - "7860:7860"
-    volumes:
-      - ./logs:/app/logs
-
-Then run:
-bash
-Copy
-
-docker-compose up
-
-Troubleshooting
-
-    Docker Desktop Not Starting:
-
-        Ensure WSL 2 is enabled. Open PowerShell as Administrator and run:
-        bash
-        Copy
-
-        wsl --set-default-version 2
-
-        Restart Docker Desktop.
-
-    Port Conflict:
-
-        If port 7860 is already in use, change the port mapping:
-        bash
-        Copy
-
-        docker run -p 7870:7860 rag-chatbot
-
-        Access the chatbot at http://localhost:7870.
-
-    File Upload Issues:
-
-        Ensure the data folder exists in the project directory.
-
-        If using Docker volumes, ensure the correct path is provided.
-
-License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-Acknowledgments
-
-    DeepSeek: For the 1.5B language model.
-
-    Ollama: For providing an easy way to run local models.
-
-    Gradio: For the chatbot interface.
